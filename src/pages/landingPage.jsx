@@ -11,9 +11,7 @@ function LandingPage() {
             <Navbar></Navbar>
 
             <div className="flex m-4 h-screen"> {/* Change h-full to h-screen */}
-
                 <div className="w-3/5">
-
                     <div className='container mt-8 ms-8'>
                         <Hero>  </Hero>
                     </div>
