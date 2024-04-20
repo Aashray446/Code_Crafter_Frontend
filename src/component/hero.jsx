@@ -17,7 +17,7 @@ const Hero = () => {
             <h1 className="text-4xl font-bold mb-4 tracking-wider">Let's Make Learning</h1>
             <p className="text-lg mb-4">
                 <span className="text-4xl font-bold mb-4 tracking-wider">More </span>
-                <span className="text-4xl font-bold mb-4">{words[currentWordIndex]}</span>
+                <span className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-b from-pink-400 to-purple-600 ">{words[currentWordIndex]}</span>
 
             </p>
         </div>
