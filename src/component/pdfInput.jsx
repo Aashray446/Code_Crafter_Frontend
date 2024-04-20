@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PdfInput = () => {
     return (
@@ -35,7 +36,8 @@ const PdfInput = () => {
                     <input id="dropzone-file" type="file" className="hidden" />
                 </label>
             </div>
-            <button className='w-full mt-4 btn btn-primary'>GET STARTED</button>
+            <Link to="/result">
+                <button className='w-full mt-4 btn btn-primary'>GET STARTED</button></Link>
         </div>
 
     );
