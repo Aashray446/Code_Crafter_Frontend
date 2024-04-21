@@ -3,7 +3,6 @@ import Hero from '../component/hero'
 import Navbar from '../component/navbar'
 import PdfInput from '../component/pdfInput'
 import React from 'react'
-import { useState } from 'react'
 import '../App.css'
 
 

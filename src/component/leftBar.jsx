@@ -2,10 +2,10 @@ import LinksList from "./resources";
 import Topics from "./topics";
 
 export default function LeftBar({ topics, onChange }) {
+    console.log(onChange);
     return (
-
         <>
-            <Topics data={topics}> onChange={onChange}   </Topics>
+            <Topics topics={topics} onChange={onChange}>    </Topics>
             <LinksList> </LinksList>
 
         </>

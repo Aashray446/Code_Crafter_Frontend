@@ -1,5 +1,4 @@
 export default function Topics({ topics, onChange }) {
-    console.log(topics.data);
     return (
         <div className="container m-4">
             <div className="mr-6">
@@ -7,7 +6,7 @@ export default function Topics({ topics, onChange }) {
 
                 <ul className="menu bg-base-200 w-full rounded-box">
                     {
-                        topics.data.map((topic, index) => {
+                        topics.map((topic, index) => {
                             return (
                                 topic.topics ? (
                                     <li key={index}>
@@ -21,7 +20,7 @@ export default function Topics({ topics, onChange }) {
                                                     return (
                                                         <li key={index}>
                                                             <label className="cursor-pointer flex items-center">
-                                                                <input type="checkbox" className="checkbox checkbox-accent mr-2" />
+                                                                <input type="checkbox" className="checkbox checkbox-accent mr-2" onChange={() => onChange(subTopic)} />
                                                                 <a>{subTopic}</a>
                                                             </label>
                                                         </li>

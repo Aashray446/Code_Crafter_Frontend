@@ -20,7 +20,7 @@ const PdfInput = ({ isLoading }) => {
         if (selectedFile) {
             const formData = new FormData();
             formData.append('file', selectedFile);
-            const respones = await axios.post('http://localhost:8000/upload', formData)
+            const respones = await axios.post('http://localhost:8001/upload', formData)
             if (respones.data) {
 
                 console.log(respones.data);

@@ -1,18 +1,30 @@
 import React from 'react';
 
-const QuestionCard = ({ question, options, type }) => {
+const QuestionCard = ({ question, options, type, answer }) => {
     return (
         type === "MCQ" ? (
             <div className="w-full mx-auto bg-white shadow-md rounded-md overflow-hidden">
                 <div className="p-4">
                     <h2 className="text-lg font-semibold mb-4">{question}</h2>
                     <ul>
-                        {options.map((option, index) => (
-                            <li key={index} className="flex items-center py-2">
-                                <input type="radio" id={`option${index}`} name="options" className="mr-2" />
-                                <label htmlFor={`option${index}`}>{option}</label>
-                            </li>
-                        ))}
+
+                        {
+                            Object.keys(options).map((option, index) => {
+                                return (
+                                    <li key={index} className="flex items-center py-2">
+                                        <input type="radio" value={option} id={`option${index}`} name="options" className="mr-2" onChange={
+                                            (e) => {
+
+                                                e.target.value === answer ? window.alert('Correct Answer') : window.alert('Wrong Answer')
+                                            }
+
+                                        } />
+                                        <label htmlFor={`option${index}`}>{options[option]}</label>
+                                    </li>
+                                )
+                            })
+                        }
+
                     </ul>
                 </div>
             </div>
