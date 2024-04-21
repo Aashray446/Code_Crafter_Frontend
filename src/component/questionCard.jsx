@@ -1,6 +1,7 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
-const QuestionCard = ({ question, options, type, answer }) => {
+const QuestionCard = ({ question, options, type, answer, setScore }) => {
     return (
         type === "MCQ" ? (
             <div className="w-full mx-auto bg-white shadow-md rounded-md overflow-hidden">
@@ -15,7 +16,15 @@ const QuestionCard = ({ question, options, type, answer }) => {
                                         <input type="radio" value={option} id={`option${index}`} name="options" className="mr-2" onChange={
                                             (e) => {
 
-                                                e.target.value === answer ? window.alert('Correct Answer') : window.alert('Wrong Answer')
+                                                // e.target.value === answer ? toast.success('Correct Answer') : toast.error('Wrong Answer')
+                                                if (e.target.value === answer) {
+                                                    toast.success('Correct Answer')
+                                                    setScore((prev) => prev + 2)
+                                                }
+                                                else {
+                                                    toast.error('Wrong Answer')
+                                                    setScore((prev) => prev - 1)
+                                                }
                                             }
 
                                         } />

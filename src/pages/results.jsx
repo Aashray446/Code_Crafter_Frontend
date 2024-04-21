@@ -4,6 +4,9 @@ import Navbar from "../component/navbar"
 import QuestionCard from "../component/questionCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Results() {
     const location = useLocation();
@@ -34,6 +37,8 @@ function Results() {
 
     const [isloading, setisloading] = React.useState(false);
 
+    const [score, setScore] = React.useState(0);
+
     return (
         <div className="w-full">
             <Navbar></Navbar>
@@ -53,10 +58,15 @@ function Results() {
                             <div className="flex flex-col space-y-4">
                                 {
                                     questions.map((question, index) => {
-                                        return <QuestionCard question={question.question} options={question.options} type={question.type} answer={question.answer}></QuestionCard>
+                                        return <QuestionCard question={question.question} options={question.options} type={question.type} answer={question.answer} setScore={setScore} ></QuestionCard>
                                     })
                                 }
-                                <button className="btn btn-primary relative bottom-0 w-full">SUBMIT</button>
+                                <button className="btn btn-primary relative bottom-0 w-full" onClick={
+                                    () => {
+                                        toast.success(`You have successfully submitted the test. 
+                                        Your score is ${score} out of ${questions.length * 2}`)
+                                    }
+                                }>SUBMIT</button>
                             </div>
                         </>)
                         : <div className="flex justify-center h-full w-full">
@@ -70,6 +80,20 @@ function Results() {
                     <div class="loader"></div>
                 </div> : ""
             }
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition:Bounce
+            />
+
         </div >
 
     )

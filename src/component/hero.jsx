@@ -43,7 +43,7 @@ const Hero = () => {
                 width={400}
             />
 
-            <p className='text-center ml-32 mr-32'>
+            <p className='text-center ml-32 mr-32 leading-loose'>
                 Our web application provides a multifaceted solution to the aforementioned challenges. Users can upload PDF documents or specify topics they wish to study. The platform then extracts relevant information and presents it in an interactive format, utilizing multimedia elements such as videos, animations, and interactive diagrams. Users can navigate through the content at their own pace, gaining a deeper understanding of complex topics through hands-on exploration.
             </p>
 
