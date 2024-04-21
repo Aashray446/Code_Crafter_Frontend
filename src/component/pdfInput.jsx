@@ -1,7 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
-const PdfInput = () => {
+
+const PdfInput = ({ isLoading }) => {
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const navigate = useNavigate();
+
+    const handleFileChange = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        isLoading(true)
+        // You can now do whatever you want with the selected file
+        if (selectedFile) {
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            const respones = await axios.post('http://localhost:8000/upload', formData)
+            if (respones.data) {
+
+                console.log(respones.data);
+                isLoading(false)
+                navigate('/result', { state: { data: respones.data } });
+            }
+            else {
+                console.log('Error in uploading file', respones.error);
+            }
+        } else {
+            console.log('No file selected');
+        }
+    };
+
     return (
         <div className="h-full w-full m-2">
             <h1 className="mb-5 flex justify-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-purple-600">Upload Your Study Material</h1>
@@ -35,11 +68,11 @@ const PdfInput = () => {
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">PDF MAX 10 PAGES</p>
                     </div>
-                    <input id="dropzone-file" type="file" className="hidden" />
+                    <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
                 </label>
             </div>
             <Link to="/result">
-                <button className='w-full mt-4 btn btn-primary'>GET STARTED</button></Link>
+                <button className='w-full mt-4 btn btn-primary' onClick={handleSubmit} >GET STARTED</button></Link>
         </div>
 
     );

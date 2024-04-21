@@ -22,9 +22,12 @@ const Hero = () => {
                 <h1 className="text-4xl font-bold mb-4 tracking-wider">Let's Make Learning</h1>
                 <p className="text-lg mb-4">
                     <span className="text-4xl font-bold mb-4 tracking-wider">More </span>
-                    <span className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-b from-pink-400 to-purple-600 ">{words[currentWordIndex]}</span>
+                    <span className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-b from-pink-400 to-purple-600 animate-translate">
+                        {words[currentWordIndex]}
+                    </span>
 
                 </p>
+
             </div>
 
             <Lottie
@@ -40,8 +43,8 @@ const Hero = () => {
                 width={400}
             />
 
-            <p className='m4 text-center'>
-                Our is a platform that helps students to study more efficiently by summarizing study materials.
+            <p className='text-center ml-32 mr-32'>
+                Our web application provides a multifaceted solution to the aforementioned challenges. Users can upload PDF documents or specify topics they wish to study. The platform then extracts relevant information and presents it in an interactive format, utilizing multimedia elements such as videos, animations, and interactive diagrams. Users can navigate through the content at their own pace, gaining a deeper understanding of complex topics through hands-on exploration.
             </p>
 
 
@@ -49,4 +52,7 @@ const Hero = () => {
     );
 };
 
+
+
 export default Hero;
+
